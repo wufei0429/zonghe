@@ -95,7 +95,20 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
+
+
+
+
+
+
+{
+  data: function data() {
+    return {};
+  },
+  onLoad: function onLoad() {},
+  methods: {} };exports.default = _default;
 
 /***/ }),
 
@@ -114,7 +127,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("view", [_vm._v("文章详情页。。。")])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,5 +1,8 @@
+
 <template>
-	<div></div>
+	<view class="container">
+		我的消息
+	</view>
 </template>
 
 <script>

@@ -145,16 +145,17 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
-    uni.setNavigationBarTitle({
-      title: '登录' });
-
+    // 		uni.setNavigationBarTitle({
+    // 			title: '登录'
+    // 		});
   },
   methods: {
     signIn: function signIn(userDTO) {
       var _this = this;
       // console.log(userDTO.mobile + ',' + userDTO.password);
       uni.request({
-        url: 'http://39.96.182.225:8080/api/user/sign_in',
+        url: 'http://47.102.201.109:8080/api/user/sign_in',
+        // url: 'http://172.20.10.4:8080/api/user/sign_in',
         method: 'POST',
         data: {
           mobile: userDTO.mobile,
@@ -235,7 +236,7 @@ var render = function() {
         staticClass: "uni-input",
         attrs: {
           type: "number",
-          placeholder: "输入手机号",
+          placeholder: "请输入手机号",
           required: "required",
           eventid: "4604bace-0"
         },
@@ -262,7 +263,7 @@ var render = function() {
         attrs: {
           password: "",
           type: "text",
-          placeholder: "输入密码",
+          placeholder: "请输入密码",
           required: "required",
           eventid: "4604bace-1"
         },
@@ -279,7 +280,8 @@ var render = function() {
       _c(
         "button",
         {
-          attrs: { type: "primary", eventid: "4604bace-2" },
+          staticClass: "green-btn",
+          attrs: { eventid: "4604bace-2" },
           on: {
             tap: function($event) {
               _vm.signIn(_vm.userDTO)

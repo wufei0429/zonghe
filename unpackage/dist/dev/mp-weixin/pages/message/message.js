@@ -114,7 +114,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("view", { staticClass: "container" }, [_vm._v("我的消息")])
 }
 var staticRenderFns = []
 render._withStripped = true

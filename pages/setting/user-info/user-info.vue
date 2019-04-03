@@ -1,21 +1,10 @@
 <template>
 	<view class="uni-flex uni-column container">
-		<!-- <uni-list>
-			<uni-list-item title="标题文字" show-arrow="false"></uni-list-item>
-			<uni-list-item title="标题文字"></uni-list-item>
-			<uni-list-item title="标题文字" show-badge="true" badge-text="12"></uni-list-item>
-			<uni-list-item
-				title="禁用状态"
-				disabled="true"
-				show-badge="true"
-				badge-text="12"
-			></uni-list-item>
-		</uni-list> -->
 
 		<view class="list">
-			<navigator class="list-item" url="article"><text class="setting-txt">文章推送</text></navigator>
-			<navigator class="list-item" url="newMessage"><text class="setting-txt">新消息推送</text></navigator>
-			<navigator class="list-item" url="user-info/user-info"><text class="setting-txt">个人资料</text></navigator>
+			<navigator class="list-item" url="user-mobile"><text class="setting-txt">修改手机号</text></navigator>
+			<navigator class="list-item" url=""><text class="setting-txt">修改图像</text></navigator>
+			<navigator class="list-item" url="user-password"><text class="setting-txt">修改密码</text></navigator>
 		</view>
 		<button @tap="logout" class="green-btn">退出当前账号</button>
 	</view>

@@ -1,29 +1,44 @@
 <template>
 	<view class="container">
+		<!-- 顶部头像和昵称区域，纵向排列 -->
 		<view class="top">
 			<view class="avatar-box">
-				<image
-					src="../../static/default.png"
-					mode="scaleToFill"
-					class="avatar"
-					v-if="!storageData.login">
-					</image>
-				<image
-					:src="storageData.avatar"
-					mode="scaleToFill"
-					class="avatar"
-					v-if="storageData.login"
-				></image>
+				<image src="../../static/default.png" mode="scaleToFill" class="avatar" v-if="!storageData.login"></image>
+				<image :src="storageData.avatar" mode="scaleToFill" class="avatar" v-if="storageData.login"></image>
 			</view>
 			<view class="info-box">
 				<navigator url="../signin/signin" v-if="!storageData.login">点击登录</navigator>
 				<text v-if="storageData.login">{{ storageData.nickname }}</text>
+				<navigator url="../setting/setting" v-if="storageData.login"><text class="setting-txt">个人设置</text></navigator>
 			</view>
 		</view>
-		<view>
-			<navigator url="../setting/setting">
-				<button type="primary" @tap="signOut">设置</button>
-			</navigator>
+
+		<!-- 中间文章数量、好友数量、消息数量等统计区域，横向排列 -->
+		<view class="center" v-if="storageData.login">
+			<view class="info">
+				<text class="title">{{ articleCount }}</text>
+				<text>文章</text>
+			</view>
+			<view class="info">
+				<text class="title">{{ followCount }}</text>
+				<text>关注</text>
+			</view>
+			<view class="info">
+				<text class="title">{{ messageCount }}</text>
+				<text>消息</text>
+			</view>
+			<view class="info">
+				<text class="title">{{ integral }}</text>
+				<text>积分</text>
+			</view>
+		</view>
+
+		<view class="content" v-if="storageData.login">
+			<view class="list">
+				<view class="list-item" v-for="(article, index) in articles" :key="index">
+					<text>{{ article.title }}</text>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -33,45 +48,92 @@ var loginRes, _self;
 export default {
 	data() {
 		return {
-			storageData: {}
+			storageData: {},
+			articleCount: 88,
+			followCount: 50,
+			messageCount: 98,
+			integral: 1000,
+			articles: [
+				{
+					id: 1,
+					title: '第一篇文章'
+				},
+				{
+					id: 2,
+					title: '第二篇文章'
+				},
+				{
+					id: 3,
+					title: '第三篇文章'
+				},
+				{
+					id: 4,
+					title: '第四篇文章'
+				}
+			]
 		};
 	},
 	onLoad: function() {},
 	onShow: function() {
 		const loginKey = uni.getStorageSync('login_key');
-		console.log("come");
 		if (loginKey) {
-			console.log(loginKey);
+			// console.log(loginKey);
 			this.storageData = {
 				login: loginKey.login,
 				nickname: loginKey.nickname,
 				avatar: loginKey.avatar
 			};
-		}else{
-			this.storageData ={
+		} else {
+			this.storageData = {
 				login: false
-			}
+			};
 		}
 	},
-	methods: {
-		
-	}
+	methods: {}
 };
 </script>
 
 <style scoped>
 .top {
 	display: flex;
-	height: 70px;
-	margin-top: 5px;
+	flex-direction: column;
+	text-align: center;
+	height: 100px;
+	margin-top: 20px;
 }
-.avatar-box{
+.avatar-box {
 	flex: 1 1 30%;
 }
-.info-box{
+.info-box {
 	flex: 1 1 70%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
+}
+.setting-txt {
+	color: #00b26a;
+	margin-left: 15px;
+}
+.center {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+.info {
+	flex: 1 1 25%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	border-right: 1px solid #eee;
+}
+.title {
+	font-size: 14pt;
+}
+.content {
+	margin-top: 20px;
+}
+
+.list-item{
+	margin-top: 10px;
 }
 </style>

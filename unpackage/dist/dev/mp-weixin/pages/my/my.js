@@ -144,19 +144,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var loginRes, _self;var _default =
 {
   data: function data() {
     return {
-      storageData: {} };
+      storageData: {},
+      articleCount: 88,
+      followCount: 50,
+      messageCount: 98,
+      integral: 1000,
+      articles: [
+      {
+        id: 1,
+        title: '第一篇文章' },
+
+      {
+        id: 2,
+        title: '第二篇文章' },
+
+      {
+        id: 3,
+        title: '第三篇文章' },
+
+      {
+        id: 4,
+        title: '第四篇文章' }] };
+
+
 
   },
   onLoad: function onLoad() {},
   onShow: function onShow() {
     var loginKey = uni.getStorageSync('login_key');
-    console.log("come");
     if (loginKey) {
-      console.log(loginKey);
+      // console.log(loginKey);
       this.storageData = {
         login: loginKey.login,
         nickname: loginKey.nickname,
@@ -226,32 +262,57 @@ var render = function() {
             : _vm._e(),
           _vm.storageData.login
             ? _c("text", [_vm._v(_vm._s(_vm.storageData.nickname))])
+            : _vm._e(),
+          _vm.storageData.login
+            ? _c("navigator", { attrs: { url: "../setting/setting" } }, [
+                _c("text", { staticClass: "setting-txt" }, [_vm._v("个人设置")])
+              ])
             : _vm._e()
         ],
         1
       )
     ]),
-    _c(
-      "view",
-      [
-        _c(
-          "navigator",
-          { attrs: { url: "../setting/setting" } },
-          [
-            _c(
-              "button",
-              {
-                attrs: { type: "primary", eventid: "0eeda40e-0" },
-                on: { tap: _vm.signOut }
-              },
-              [_vm._v("设置")]
-            )
-          ],
-          1
-        )
-      ],
-      1
-    )
+    _vm.storageData.login
+      ? _c("view", { staticClass: "center" }, [
+          _c("view", { staticClass: "info" }, [
+            _c("text", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.articleCount))
+            ]),
+            _c("text", [_vm._v("文章")])
+          ]),
+          _c("view", { staticClass: "info" }, [
+            _c("text", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.followCount))
+            ]),
+            _c("text", [_vm._v("关注")])
+          ]),
+          _c("view", { staticClass: "info" }, [
+            _c("text", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.messageCount))
+            ]),
+            _c("text", [_vm._v("消息")])
+          ]),
+          _c("view", { staticClass: "info" }, [
+            _c("text", { staticClass: "title" }, [
+              _vm._v(_vm._s(_vm.integral))
+            ]),
+            _c("text", [_vm._v("积分")])
+          ])
+        ])
+      : _vm._e(),
+    _vm.storageData.login
+      ? _c("view", { staticClass: "content" }, [
+          _c(
+            "view",
+            { staticClass: "list" },
+            _vm._l(_vm.articles, function(article, index) {
+              return _c("view", { key: index, staticClass: "list-item" }, [
+                _c("text", [_vm._v(_vm._s(article.title))])
+              ])
+            })
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

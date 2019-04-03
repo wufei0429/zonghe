@@ -3,7 +3,7 @@
 		<input
 			class="uni-input"
 			type="number"
-			placeholder="输入手机号"
+			placeholder="请输入手机号"
 			v-model="userDTO.mobile"
 			required="required"
 		/>
@@ -11,11 +11,11 @@
 			class="uni-input"
 			password
 			type="text"
-			placeholder="输入密码"
+			placeholder="请输入密码"
 			v-model="userDTO.password"
 			required="required"
 		/>
-		<button type="primary" @tap="signIn(userDTO)">登录</button>
+		<button class="green-btn" @tap="signIn(userDTO)">登录</button>
 	</view>
 </template>
 
@@ -30,16 +30,17 @@ export default {
 		};
 	},
 	onLoad() {
-		uni.setNavigationBarTitle({
-			title: '登录'
-		});
+		// 		uni.setNavigationBarTitle({
+		// 			title: '登录'
+		// 		});
 	},
 	methods: {
 		signIn: function(userDTO) {
 			var _this = this;
 			// console.log(userDTO.mobile + ',' + userDTO.password);
 			uni.request({
-				url: 'http://39.96.182.225:8080/api/user/sign_in',
+				url: 'http://47.102.201.109:8080/api/user/sign_in',
+				// url: 'http://172.20.10.4:8080/api/user/sign_in',
 				method: 'POST',
 				data: {
 					mobile: userDTO.mobile,
@@ -83,5 +84,10 @@ input {
 	height: 50px;
 	border-bottom: 1px solid #eee;
 	margin-bottom: 5px;
+}
+
+.green-btn{
+	background-color: #00B26A;
+	margin-top: 10px;
 }
 </style>
