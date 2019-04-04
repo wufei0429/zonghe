@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/message/message",
     "pages/signin/signin",
+    "pages/register/register",
     "pages/write/write",
     "pages/info/info",
     "pages/setting/setting",

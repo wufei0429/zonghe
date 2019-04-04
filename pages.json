@@ -27,6 +27,10 @@
 			"style": {}
 		},
 		{
+			"path": "pages/register/register",
+			"style": {}
+		},
+		{
 			"path": "pages/write/write",
 			"style": {}
 		},

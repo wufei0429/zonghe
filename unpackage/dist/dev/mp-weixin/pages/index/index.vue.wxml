@@ -1,1 +1,1 @@
-<template name="e52cfd98"><view class="_view e52cfd98 content"><image class="_image e52cfd98 logo" src="../../static/logo.png"></image><view class="_view e52cfd98"><text class="_text e52cfd98 title">{{title}}</text></view></view></template>
+<template name="afe20c08"><view class="_view afe20c08 content"><image class="_image afe20c08 logo" src="../../static/logo.png"></image><view class="_view afe20c08"><text class="_text afe20c08 title">{{title}}</text></view></view></template>
