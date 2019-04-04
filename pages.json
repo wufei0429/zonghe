@@ -61,7 +61,16 @@
 		{
 			"path": "pages/setting/article",
 			"style": {}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {}
+		},
+		{
+			"path": "pages/register/password",
+			"style": {}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

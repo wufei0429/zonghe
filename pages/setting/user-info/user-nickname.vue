@@ -32,7 +32,7 @@ export default {
 			// const loginKey = uni.getStorageSync('login_key');
 			var _this = this;
 			uni.request({
-				url: 'http://47.102.201.109:8080/api/user/updateNickName',
+				url: this.apiServer+'/user/updateNickName',
 				// url: 'http://172.20.10.4:8080/api/user/sign_in',
 				method: 'PUT',
 				data: {

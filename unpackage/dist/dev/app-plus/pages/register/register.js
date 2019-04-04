@@ -1,7 +1,7 @@
 
       !(function(){
         var uniAppViewReadyCallback = function(){
-          setCssToHead([".",[1],"_input.",[1],"data-v-3332e314 { height: 50px; border-bottom: 1px solid #eee; margin-bottom: 5px; }\n.",[1],"green-btn.",[1],"data-v-3332e314 { background-color: #00B26A; margin-top: 10px; }\n.",[1],"reg.",[1],"data-v-3332e314 { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-flow: row nowrap; -ms-flex-flow: row nowrap; flex-flow: row nowrap; }\n",],undefined,{path:"./pages/register/register.wxss"})();
+          setCssToHead([".",[1],"sign-box { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }\n.",[1],"left { -webkit-box-flex: 1; -webkit-flex: 1 1 70%; -ms-flex: 1 1 70%; flex: 1 1 70%; }\n.",[1],"small-btn { width: 100px; height: 40px; font-size: 14px; }\n",],undefined,{path:"./pages/register/register.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/register/register.wxml') } }));
         }
         if(window.__uniAppViewReady__){

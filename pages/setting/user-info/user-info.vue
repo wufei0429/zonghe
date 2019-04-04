@@ -57,7 +57,7 @@ export default {
 									success: function() {
 										console.log('save success');
 										uni.uploadFile({
-											url: 'http://47.102.201.109:8080/api/user/avatar',
+											url: _this.apiServer+'/user/avatar',
 											filePath: res.tempFilePaths[0],
 											name: 'file',
 											formData: {
@@ -85,7 +85,7 @@ export default {
 							success: function(res) {
 								console.log(JSON.stringify(res.tempFilePaths));
 								uni.uploadFile({
-									url: 'http://47.102.201.109:8080/api/user/avatar',
+									url: _this.apiServer+'/user/avatar',
 									filePath: res.tempFilePaths[0],
 									name: 'file',
 									formData: {

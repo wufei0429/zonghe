@@ -1,98 +1,106 @@
 <template>
-	<view class="uni-flex uni-column container">
-		<input class="uni-input" type="number" placeholder="手机号" v-model="userDTO.mobile" required="required" />
-		<input class="uni-input" password type="text" placeholder="密码" v-model="userDTO.password" required="required" />
-		<input class="uni-input" password type="text" placeholder="确认密码" v-model="userDTO.passwordAgain" required="required" />
-		<button class="green-btn" @tap="register(userDTO)">注册</button>
+	<view class="container">
+		<view class="sign-box">
+			<input
+				class="uni-input left"
+				type="number"
+				placeholder="输入手机号"
+				v-model="mobile"
+				required="required"
+			/>
+			<button class="green-btn small-btn right" @tap="getVerifyCode">获取验证码</button>
+		</view>
+		<input
+			class="uni-input"
+			type="number"
+			placeholder="输入验证码"
+			v-model="verifyCode"
+			required="required"
+		/>
+
+		<button @tap="checkCode" class="green-btn">下一步</button>
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				userDTO: {
-					mobile: '',
-					password: '',
+export default {
+	data() {
+		return {
+			mobile: '',
+			verifyCode: ''
+		};
+	},
+	onLoad() {},
+	methods: {
+		getVerifyCode: function() {
+			var _this = this;
+			uni.request({
+				url: _this.apiServer + '/user/verify',
+				method: 'POST',
+				header: { 'content-type': 'application/x-www-form-urlencoded' },
+				data: {
+					mobile: _this.mobile
 				},
-				remmberPsw: true
-			};
-		},
-		onLoad() {
-			// 		uni.setNavigationBarTitle({
-			// 			title: '登录'
-			// 		});
-		},
-		methods: {
-			register: function(userDTO) {
-				var _this = this;
-				// console.log(userDTO.mobile + ',' + userDTO.password);
-				if (_this.userDTO.password != _this.userDTO.passwordAgain) {
-					uni.showToast({
-						title: '两次密码输入不一致',
-						duration: 1000,
-						mask: true
-					})
-				} else {
-					uni.request({
-						url: 'http://47.102.201.109:8080/api/user/insertDto',
-						// url: 'http://172.20.10.4:8080/api/user/sign_in',
-						method: 'POST',
-						data: {
-							mobile: userDTO.mobile,
-							password: userDTO.password,
-						},
-						header: {
-							'content-type': 'application/x-www-form-urlencoded'
-						},
-						success: res => {
-							console.log(res.data.code);
-							if (res.data.code == 0) {
-								uni.showModal({
-									title: '注册成功',
-									success: function(res) {
-										if (res.confirm) {
-											uni.navigateBack({
-												delta: 2
-											})
-										} else if (res.cancel) {
-											uni.navigateBack({
-												delta: 2
-											})
-										}
-									}
-								});
-							}
-							//登录失败，弹出各种原因
-							else {
-								uni.showModal({
-									title: '注册失败',
-									content: res.data.msg
-								});
-							}
-						}
-					});
+				success: res => {
+					if (res.data.code === 0) {
+						uni.showToast({
+							title: '验证码已发送'
+						});
+						_this.disabled = true;
+						console.log(_this.disabled);
+					} else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.msg
+						});
+					}
 				}
-
-			},
+			});
+		},
+		checkCode: function() {
+			var _this = this;
+			console.log(_this.verifyCode);
+			console.log(_this.mobile);
+			uni.request({
+				url: this.apiServer + '/user/check',
+				method: 'POST',
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				data: {
+					mobile: _this.mobile,
+					verifyCode: _this.verifyCode
+				},
+				success: res => {
+					console.log(res.data.code);
+					if (res.data.code === 0) {
+						uni.navigateTo({
+							url: '../register/password?mobile=' + _this.mobile
+						});
+					} else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.msg
+						});
+					}
+				}
+			});
 		}
-	};
+	}
+};
 </script>
 
-<style scoped>
-	input {
-		height: 50px;
-		border-bottom: 1px solid #eee;
-		margin-bottom: 5px;
-	}
-
-	.green-btn {
-		background-color: #00B26A;
-		margin-top: 10px;
-	}
-
-	.reg {
-		display: flex;
-		flex-flow: row nowrap;
-	}
+<style>
+.sign-box {
+	display: flex;
+	align-items: center;
+}
+.left {
+	flex: 1 1 70%;
+}
+.small-btn {
+	width: 100px;
+	height: 40px;
+	font-size: 14px;
+}
 </style>

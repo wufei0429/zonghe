@@ -46,24 +46,22 @@
 			}
 		},
 		methods: {
-
 			signIn: function(userDTO) {
 				var _this = this;
 				// console.log(userDTO.mobile + ',' + userDTO.password);
 				uni.request({
-					url: 'http://47.102.201.109:8080/api/user/sign_in',
+					url: this.apiServer+'/user/sign_in',
 					// url: 'http://172.20.10.4:8080/api/user/sign_in',
 					method: 'POST',
 					data: {
 						mobile: userDTO.mobile,
-						password: userDTO.password,
-
+						password: userDTO.password
 					},
 					header: {
 						'content-type': 'application/json'
 					},
 					success: res => {
-						// console.log(res.data.data.mobile);
+						console.log(res.data.code);
 						if (res.data.code == 0) {
 							//将用户数据记录在本地存储
 							uni.setStorageSync('login_key', {
@@ -73,7 +71,7 @@
 								token: res.data.data.token,
 								login: true
 							});
-							console.log(_this.remmberPsw);
+							// console.log(_this.remmberPsw);
 							if ( _this.remmberPsw == true) {
 								uni.setStorageSync('remMobile', res.data.data.mobile);
 								uni.setStorageSync('remPsw', res.data.data.password);
@@ -99,7 +97,6 @@
 			},
 			//复选框
 			checkboxChange: function(e) {
-
 				console.log(e.detail.value.length);
 				if (e.detail.value.length == 1) {
 					uni.getStorageSync('remMobile',this.uname);
