@@ -1,17 +1,5 @@
 <template>
 	<view class="uni-flex uni-column container">
-		<!-- <uni-list>
-			<uni-list-item title="标题文字" show-arrow="false"></uni-list-item>
-			<uni-list-item title="标题文字"></uni-list-item>
-			<uni-list-item title="标题文字" show-badge="true" badge-text="12"></uni-list-item>
-			<uni-list-item
-				title="禁用状态"
-				disabled="true"
-				show-badge="true"
-				badge-text="12"
-			></uni-list-item>
-		</uni-list> -->
-
 		<view class="list">
 			<navigator class="list-item" url="article"><text class="setting-txt">文章推送</text></navigator>
 			<navigator class="list-item" url="newMessage"><text class="setting-txt">新消息推送</text></navigator>
@@ -53,5 +41,6 @@ export default {
 		display: flex;
 		/* justify-content: center; */
 		align-items: center;
+		height: 50px;
 	}
 </style>

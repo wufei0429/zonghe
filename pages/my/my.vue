@@ -3,13 +3,25 @@
 		<!-- 顶部头像和昵称区域，纵向排列 -->
 		<view class="top">
 			<view class="avatar-box">
-				<image src="../../static/default.png" mode="scaleToFill" class="avatar" v-if="!storageData.login"></image>
-				<image :src="storageData.avatar" mode="scaleToFill" class="avatar" v-if="storageData.login"></image>
+				<image
+					src="../../static/default.png"
+					mode="scaleToFill"
+					class="avatar"
+					v-if="!storageData.login"
+				></image>
+				<image
+					:src="storageData.avatar"
+					mode="scaleToFill"
+					class="avatar"
+					v-if="storageData.login"
+				></image>
 			</view>
 			<view class="info-box">
 				<navigator url="../signin/signin" v-if="!storageData.login">点击登录</navigator>
 				<text v-if="storageData.login">{{ storageData.nickname }}</text>
-				<navigator url="../setting/setting" v-if="storageData.login"><text class="setting-txt">个人设置</text></navigator>
+				<navigator url="../setting/setting" v-if="storageData.login">
+					<text class="setting-txt">个人设置</text>
+				</navigator>
 			</view>
 		</view>
 
@@ -78,6 +90,7 @@ export default {
 		const loginKey = uni.getStorageSync('login_key');
 		if (loginKey) {
 			// console.log(loginKey);
+			//this.onLoad()//再次加载，实现返回上一页页面刷新
 			this.storageData = {
 				login: loginKey.login,
 				nickname: loginKey.nickname,
@@ -89,7 +102,8 @@ export default {
 			};
 		}
 	},
-	methods: {}
+	methods: {
+	}
 };
 </script>
 
@@ -102,10 +116,14 @@ export default {
 	margin-top: 20px;
 }
 .avatar-box {
-	flex: 1 1 30%;
+	flex: 1 1 50%;
+}
+.avatar {
+	width: 80px;
+	height: 80px;
 }
 .info-box {
-	flex: 1 1 70%;
+	flex: 1 1 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -117,7 +135,7 @@ export default {
 .center {
 	display: flex;
 	justify-content: center;
-	margin-top: 10px;
+	margin-top: 30px;
 }
 .info {
 	flex: 1 1 25%;
@@ -133,7 +151,7 @@ export default {
 	margin-top: 20px;
 }
 
-.list-item{
+.list-item {
 	margin-top: 10px;
 }
 </style>
