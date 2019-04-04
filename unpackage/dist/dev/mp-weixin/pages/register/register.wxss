@@ -1,0 +1,22 @@
+
+._input.data-v-4668a288 {
+	height: 50px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 5px;
+}
+.green-btn.data-v-4668a288 {
+	background-color: #00B26A;
+	margin-top: 10px;
+}
+.reg.data-v-4668a288 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-flow: row nowrap;
+	    -ms-flex-flow: row nowrap;
+	        flex-flow: row nowrap;
+}
+
