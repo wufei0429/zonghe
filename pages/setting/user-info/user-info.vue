@@ -2,21 +2,27 @@
 	<view class="uni-flex uni-column container">
 		<view class="list">
 			<view class="list-nick">
-				<navigator class="list-item" url="user-nickname">修改昵称</navigator>
+				<navigator url="user-nickname">修改昵称</navigator>
 				<view>{{ nickname }}</view>
 			</view>
+			
+			<view class="item-hr"></view>
 
 			<view class="list-avatar">
 				<navigator @tap="showActionSheet">修改图像</navigator>
 				<image :src="avatar" class="avatar" @tap="showActionSheet"></image>
 			</view>
+			
+			<view class="item-hr"></view>
 
 			<view class="list-nick">
-				<navigator class="list-item" url="user-password">修改密码</navigator>
+				<navigator url="user-password">修改密码</navigator>
 			</view>
+			
+			<view class="item-hr"></view>
 		</view>
 
-		<button @tap="logout" class="green-btn">退出当前账号</button>
+		<!-- <button @tap="logout" class="green-btn">退出当前账号</button> -->
 	</view>
 </template>
 
@@ -26,10 +32,32 @@ export default {
 		return {
 			nickname: uni.getStorageSync('login_key').nickname,
 			avatar: uni.getStorageSync('login_key').avatar,
-			userId: uni.getStorageSync('login_key').userId
+			userId: uni.getStorageSync('login_key').userId,
+			mobile: uni.getStorageSync('login_key').mobile
 		};
 	},
 	onLoad() {},
+	onShow() {
+		var _this = this;
+		uni.request({
+			// url: 'http://localhost:8080/api/user/' + uni.getStorageSync('login_key').userId,
+			url: this.apiServer+ '/user/getUserByMobile',
+			method: 'GET',
+			data: {
+				mobile: _this.mobile
+			},
+			header: {
+				'content-type': 'application/x-www-form-urlencoded'
+			},
+			success: res => {
+				if (res.data.code === 0) {
+					// console.log(res.data.data.avatar + '————————————');
+					_this.avatar = res.data.data.avatar;
+					_this.nickname = res.data.data.nickname1;
+				}
+			}
+		});
+	},
 	methods: {
 		logout: function() {
 			console.log('log out');
@@ -37,7 +65,9 @@ export default {
 			uni.showToast({
 				title: '已经退出当前账号'
 			});
-			uni.navigateBack();
+			uni.redirectTo({
+				url:'../../signin/signin'
+			})
 		},
 		showActionSheet: function() {
 			console.log('show');
@@ -105,7 +135,7 @@ export default {
 				}
 			});
 		}
-	},
+	}
 	// ,
 // 	bindLogin(e) {
 // 		try {
@@ -144,10 +174,17 @@ export default {
 	justify-content: space-between;
 	/* border: 1px solid #8F8F94; */
 }
+
 .avatar {
 	border-radius: 50%;
 	align-items: center;
 	height: 80px;
 	width: 80px;
+}
+
+.item-hr{
+	height: 1px;
+    border-top: 1px solid #ddd;
+    text-align: center;
 }
 </style>

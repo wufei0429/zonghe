@@ -43,4 +43,9 @@
 	height: 80px;
 	width: 80px;
 }
+.item-hr{
+	height: 1px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
 

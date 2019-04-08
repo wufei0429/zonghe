@@ -1,39 +1,65 @@
 <template>
-	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
-		<view>
-            <text class="title">{{title}}</text>
-        </view>
-	</view>
+	<view class="container"><view class="article" v-for="(article, index) in "></view></view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
+export default {
+	data() {
+		return {
+			articles: []
+		};
+	},
+	onLoad: function() {
+		this.getArticles();
+	},
+	onShow:function(){},
+	onPullDownRefresh:function() {
+		this.getArticles();
+	},
+	methods: {
+		getArticles:function(){
+			var _this = this;
+			uni.request({
+				url:this.apiServer+'/article/list',
+				method:'GET',
+				header:{
+					'content-type': 'application/x-www-form-urlencoded'
+				},
+				success:res=>{
+					_this.articles = res.data.data;
+				},
+				complete:function(){
+					uni.stopPullDownRefresh();
+				}
+			});
 		},
-		onLoad() {
+		gotoDetail:function(aId){
+			uni.navigateTo({
+				url:'../articles_detail/article_detail'
+			})
+		},
+		handleTime:function(data){
 
 		},
-		methods: {
+		handleContent:function(msg){
+
 		}
 	}
+};
 </script>
 
 <style>
-	.content {
-		text-align: center;
-		height: 400upx;
-	}
-    .logo{
-        height: 200upx;
-        width: 200upx;
-        margin-top: 200upx;
-    }
-	.title {
-		font-size: 36upx;
-		color: #8f8f94;
-	}
+.content {
+	text-align: center;
+	height: 400upx;
+}
+.logo {
+	height: 200upx;
+	width: 200upx;
+	margin-top: 200upx;
+}
+.title {
+	font-size: 36upx;
+	color: #8f8f94;
+}
 </style>

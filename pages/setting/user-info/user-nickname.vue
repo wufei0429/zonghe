@@ -33,7 +33,6 @@ export default {
 			var _this = this;
 			uni.request({
 				url: this.apiServer+'/user/updateNickName',
-				// url: 'http://172.20.10.4:8080/api/user/sign_in',
 				method: 'PUT',
 				data: {
 					nickname: _this.user.nickname1,
@@ -44,14 +43,12 @@ export default {
 				header: {
 					'content-type': 'application/x-www-form-urlencoded'
 				},
-				// 				success: function() {
-				// 					console.log(_this.user.id+"-----"+_this.user.nickname1+"成功");
-				// 				}
 				success: res => {
 // 					console.log(user.nickname1);
 // 					console.log(user.id);
 					console.log(res.data.code);
-					// if (res.data.code == 0) {
+					if (res.data.code == 0) {
+						// _this.user.splice(index,1);//删除id为index的1条数据
 						uni.showToast({
 							title: '修改昵称成功',
 							icon: 'succes',
@@ -62,14 +59,14 @@ export default {
 						uni.redirectTo({
 							url: "user-info"
 						});
-					// }
-// 					//登录失败，弹出各种原因
-// 					else {
-// 						uni.showModal({
-// 							title: '提示',
-// 							content: res.data.msg
-// 						});
-// 					}
+					}
+					//登录失败，弹出各种原因
+					else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.msg
+						});
+					}
 				}
 			});
 		}

@@ -43,10 +43,10 @@ export default {
 					if (res.data.code === 0) {
 						uni.showModal({
 							title: '提示',
-							content: '注册成功'
+							content: '密码修改成功'
 						});
 						uni.navigateTo({
-							url: '../signin/signin'
+							url: 'sign-info'
 						});
 					} else {
 						uni.showModal({

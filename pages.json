@@ -69,8 +69,11 @@
 		{
 			"path": "pages/register/password",
 			"style": {}
+		},
+		{
+			"path": "pages/articles_detail/article_detail",
+			"style": {}
 		}
-		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
