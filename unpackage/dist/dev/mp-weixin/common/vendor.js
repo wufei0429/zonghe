@@ -1,17 +1,5 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-/***/ "../../../../Development/VueStudy/jianyue/pages.json":
-/*!**************************************************!*\
-  !*** D:/Development/VueStudy/jianyue/pages.json ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
 /***/ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
@@ -6517,6 +6505,18 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+
+/***/ "E:\\zhvue\\jianyue\\pages.json":
+/*!***********************************!*\
+  !*** E:/zhvue/jianyue/pages.json ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 /***/ })

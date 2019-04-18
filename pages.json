@@ -73,6 +73,10 @@
 		{
 			"path": "pages/articles_detail/article_detail",
 			"style": {}
+		},
+		{
+			"path": "pages/search/search",
+			"style": {}
 		}
 	],
 	"globalStyle": {

@@ -1,0 +1,31 @@
+
+.container{
+		margin-bottom: 10px;
+		margin-top: 10px;
+}
+.content {
+		margin-bottom: 10px;
+		margin-top: 10px;
+		padding: 5px;
+		border-bottom: 1px solid #eee;
+}
+.grace-text{
+		margin-bottom: 10px;
+		margin-top: 10px;
+		padding: 5px;
+}
+	/* .green-a{
+		display: flex;
+		justify-content: space-between;
+	} */
+.green-btn {
+		
+		background-color: #00B26A;
+		margin-top: 10px;
+		/* width: 80px;
+		padding-left: 10px;
+		height: 45px; *//* 
+		border-radius: 10px; */
+}
+	
+

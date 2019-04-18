@@ -1,14 +1,14 @@
 
-._input.data-v-72a32db0 {
+._input.data-v-3378754f {
 	height: 50px;
 	border-bottom: 1px solid #eee;
 	margin-bottom: 5px;
 }
-.green-btn.data-v-72a32db0 {
+.green-btn.data-v-3378754f {
 	background-color: #00B26A;
 	margin-top: 10px;
 }
-.reg.data-v-72a32db0 {
+.reg.data-v-3378754f {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -19,7 +19,7 @@
 	    -ms-flex-flow: row nowrap;
 	        flex-flow: row nowrap;
 }
-.remmberPassword.data-v-72a32db0 {
+.remmberPassword.data-v-3378754f {
 	margin-top: 10px;
 	width: 40%;
 	-webkit-box-pack: start;
@@ -32,7 +32,7 @@
 	        align-items: center;
 	text-align: center;
 }
-.list-item.data-v-72a32db0 {
+.list-item.data-v-3378754f {
 	margin-top: 10px;
 	width: 60%;
 	-webkit-box-pack: justify;
